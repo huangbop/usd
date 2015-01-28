@@ -6,6 +6,9 @@
 #define _CY65125_H_
 
 
+int cy65125_open();
+
+
 
 
 

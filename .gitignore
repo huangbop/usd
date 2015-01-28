@@ -56,3 +56,7 @@ target/
 # Temp files
 *~
 *#
+
+# Eric
+_eric6project/
+__ui__/
