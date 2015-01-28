@@ -1,35 +1,28 @@
 import os
 import sys
-
     
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
-        self.centralWidget = QtWidgets.QWidget(MainWindow)
-        self.centralWidget.setObjectName("centralWidget")
-        MainWindow.setCentralWidget(self.centralWidget)
-
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        
 
 
-if __name__ == "__main__":
-    import sys
-    
-    
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+
+class MainForm(QMainWindow):
+    """
+    """
+    def __init__(self):
+        QMainWindow.__init__(self, None, Qt.FramelessWindowHint)
+        
+        
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    form = MainForm()
+    form.setFixedSize(800, 600)
+    form.setWindowTitle('SSD Uart Diag Tool')
+    form.show()
     sys.exit(app.exec_())
-
-
 
