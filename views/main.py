@@ -26,8 +26,8 @@ class MainForm(QMainWindow):
         vlayout.addWidget(self.bg)
         self.setCentralWidget(self.bg)
                 
-        self.title = BaseTitle(self.bg)
-        self.title.setFixedHeight(64)
+        self.title = BaseTitle(self)
+        self.title.setFixedHeight(128)
         
         self.content = QPushButton('jfjsjff', self.bg)
                 
