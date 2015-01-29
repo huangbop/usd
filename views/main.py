@@ -7,12 +7,11 @@ from PyQt5.QtWidgets import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 sys.path.append(BASE_DIR)
+
 import usd
-from usd.views.titles import BaseTitle
-
+from usd.views.title import BaseTitle
+from usd.views.container import Container
         
-
-
 
 class MainForm(QMainWindow):
     """
@@ -26,19 +25,15 @@ class MainForm(QMainWindow):
         vlayout.addWidget(self.bg)
         self.setCentralWidget(self.bg)
                 
-        self.title = BaseTitle(self)
+        self.title = BaseTitle(self) # Drive the main window
         self.title.setFixedHeight(128)
         
-        self.content = QPushButton('jfjsjff', self.bg)
-                
+        self.content = Container(self.bg)
 
         bg_vlayout = QVBoxLayout(self.bg)
         bg_vlayout.addWidget(self.title)
-        bg_vlayout.addStretch()
-        bg_vlayout.addWidget(self.content)        
+        bg_vlayout.addWidget(self.content) 
 
-        
-        
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
