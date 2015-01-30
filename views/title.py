@@ -24,7 +24,7 @@ class BaseTitle(QWidget):
         """)
         
         # Buttons group
-        self.btnsgroup = QWidget(self.bg)
+        self.btnsgroup = QWidget(self.parent) # 
         self.btnsgroup.setFixedSize(96, 28)
         grouplayout = QHBoxLayout(self.btnsgroup)
         
@@ -74,26 +74,41 @@ class BaseTitle(QWidget):
         if self.start_move:
             self.parent.move(event.globalX() - self.start_x, event.globalY() - self.start_y)
 
+    def raise_minclose(self):
+        self.btnsgroup.raise_()
+        
 
 class TabsTitle(BaseTitle):
     def __init__(self, parent):
         BaseTitle.__init__(self, parent)
 
-        # self.tabsgroup = QWidget(self)
-        # hlayout = QHBoxLayout(self.tabsgroup)
-
-        # self.tab_uart = QPushButton(QIcon("images/close.png"), "", self.tabsgroup)
-        # #self.tab_uart.setFixedSize(64, 64)
-        # self.tab_gpio = QPushButton(QIcon("images/close.png"), "", self.tabsgroup)
-        # #self.tab_gpio.setFixedSize(64, 64)
-        # hlayout.addWidget(self.tab_uart)
-        # hlayout.addWidget(self.tab_gpio)
-        # self.tabsgroup.setGeometry(0, 20, 100, 80)
-        # self.tabsgroup.setStyleSheet("""
-        # background-image: url(images/close.png);
-        #                              """)
-    
+        self.bg = QWidget(self)
         
+        self.tabsgroup = QWidget(self.bg)
+        self.tab_uart = QPushButton("UART", self.tabsgroup)
+        self.tab_gpio = QPushButton("GPIO", self.tabsgroup)
+        self.tab_register = QPushButton("REGISTER", self.tabsgroup)
+        hlayout = QHBoxLayout(self.tabsgroup)
+        hlayout.addWidget(self.tab_uart)
+        hlayout.addWidget(self.tab_gpio)
+        hlayout.addWidget(self.tab_register)
+        self.tabsgroup.setFixedSize(300, 80)
+        
+        # Lay tabsgroup
+        bg_hlayout = QHBoxLayout()
+        bg_hlayout.setContentsMargins(0, 0, 0, 0)
+        bg_hlayout.addSpacing(30)
+        bg_hlayout.addWidget(self.tabsgroup)
+        bg_hlayout.addStretch()
+        bg_vlayout = QVBoxLayout(self.bg)
+        bg_vlayout.setContentsMargins(0, 0, 0, 0)
+        bg_vlayout.addSpacing(8)
+        bg_vlayout.addLayout(bg_hlayout)
+        bg_vlayout.addStretch()
+
+    def resizeEvent(self, event):
+        self.bg.resize(event.size())
+        self.raise_minclose()
         
     
 if __name__ == '__main__':

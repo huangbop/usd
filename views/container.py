@@ -26,6 +26,12 @@ class Container(QWidget):
         QWidget.__init__(self, parent)
 
         self.content = QWidget(self)
+        self.content.setObjectName("content")
+        self.content.setStyleSheet("""
+        #content {
+        background-color: white;
+        }
+        """)
         
         self.statusbar = StatusBar(self)
         self.statusbar.setFixedHeight(32)

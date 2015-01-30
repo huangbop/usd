@@ -26,7 +26,7 @@ class MainForm(QMainWindow):
         self.bg.setObjectName("mainform_bg")
         self.bg.setStyleSheet("""
         #mainform_bg {
-        background-color: blue;
+        background-color: rgb(208, 208, 208);
         }
         """)
 
@@ -38,7 +38,7 @@ class MainForm(QMainWindow):
         #self.content.setStyleSheet("background-color: red")
 
         bg_vlayout = QVBoxLayout(self.bg)
-        bg_vlayout.setContentsMargins(0, 0, 0, 0)
+        bg_vlayout.setContentsMargins(1, 1, 1, 1)
         bg_vlayout.setSpacing(0)
         bg_vlayout.addWidget(self.title)
         bg_vlayout.addWidget(self.content)
