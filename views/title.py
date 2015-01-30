@@ -53,6 +53,9 @@ class BaseTitle(QWidget):
         stop:0 rgb(208, 208, 208), stop:1 rgb(224, 224, 224));
         }""")
 
+        self.start_move = False
+        self.start_x = self.start_y = 0
+
         # Signals
         self.btn_close.clicked.connect(self.parent.close)
         self.btn_min.clicked.connect(self.parent.showMinimized)
@@ -69,7 +72,28 @@ class BaseTitle(QWidget):
         if self.start_move:
             self.parent.move(event.globalX() - self.start_x, event.globalY() - self.start_y)
 
+
+class TabsTitle(BaseTitle):
+    def __init__(self, parent):
+        BaseTitle.__init__(self, parent)
+
+        self.tabsgroup = QWidget(self)
+        hlayout = QHBoxLayout(self.tabsgroup)
+
+        self.tab_uart = QPushButton(QIcon("images/close.png"), "", self.tabsgroup)
+        #self.tab_uart.setFixedSize(64, 64)
+        self.tab_gpio = QPushButton(QIcon("images/close.png"), "", self.tabsgroup)
+        #self.tab_gpio.setFixedSize(64, 64)
+        hlayout.addWidget(self.tab_uart)
+        hlayout.addWidget(self.tab_gpio)
+        self.tabsgroup.setGeometry(0, 20, 100, 80)
+        self.tabsgroup.setStyleSheet("""
+        background-image: url(images/close.png);
+                                     """)
+    
         
+        
+    
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     title = BaseTitle(None)

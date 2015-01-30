@@ -1,0 +1,9 @@
+
+
+
+
+MAIN_WIDTH = 900
+MAIN_HEIGHT = 700
+
+
+

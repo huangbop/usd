@@ -10,7 +10,7 @@ class Container(QTabWidget):
     def __init__(self, parent):
         QTabWidget.__init__(self, parent)
 
-        self.setTabPosition(QTabWidget.West)
+        self.setTabPosition(QTabWidget.South)
 
         self.uart = QWidget(self)
         self.gpio = QWidget(self)
