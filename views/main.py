@@ -41,7 +41,7 @@ class MainForm(QMainWindow):
         }
         """)
 
-        self.setMask(QBitmap("images/main_bg.png"))
+       # self.setMask(QBitmap("images/main_bg.png"))
 
 
 if __name__ == '__main__':
