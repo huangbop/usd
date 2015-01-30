@@ -22,6 +22,7 @@ class MainForm(QMainWindow):
 
         # Background, DONT set central
         self.bg = QWidget(self)
+        self.setCentralWidget(self.bg)
 
         self.title = TabsTitle(self) # Drive the main window
         self.title.setFixedHeight(128)
@@ -33,18 +34,14 @@ class MainForm(QMainWindow):
         bg_vlayout.addWidget(self.content)
 
     def resizeEvent(self, event):
-        self.bg.setStyleSheet("""
-        background-color: rgba(0, 255, 0, 0);
-        border-radius: 20px;
+        self.setObjectName('mainform')
+        self.setStyleSheet("""
+        #mainform {
+        background-color: rgba(255, 0, 0, 200);
+        }
         """)
-        size = event.size()
-        self.bg.setGeometry(-8, -8, size.width(), size.height())
-        
-        side = min(self.width(), self.height())
 
-        maskedRegion = QRegion(self.width()/2 - side/2, self.height()/2 - side/2, side, side, QRegion.Ellipse)
-        self.setMask(maskedRegion)
-        
+        self.setMask(QBitmap("images/main_bg.png"))
 
 
 if __name__ == '__main__':
