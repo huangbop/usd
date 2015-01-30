@@ -17,21 +17,22 @@ class BaseTitle(QWidget):
         # Always fills a background widget
         self.bg = QWidget(self)
         vlayout = QVBoxLayout(self)
+        vlayout.setContentsMargins(0, 0, 0, 0)
         vlayout.addWidget(self.bg)
+        self.bg.setStyleSheet("""
+        background-color: yellow;
+        """)
         
         # Buttons group
         self.btnsgroup = QWidget(self.bg)
-        self.btnsgroup.setFixedSize(96, 32)
-        self.btnsgroup.setStyleSheet("background-color: rgb(192, 192, 192)")
+        self.btnsgroup.setFixedSize(96, 28)
         grouplayout = QHBoxLayout(self.btnsgroup)
+        
         self.btn_close = QPushButton(QIcon("images/close.png"), '', self.btnsgroup)
-        self.btn_close.setIconSize(QSize(16, 16))
         self.btn_close.setFlat(True)
         self.btn_min = QPushButton(QIcon("images/min.png"), '', self.btnsgroup)
-        self.btn_min.setIconSize(QSize(16, 16))
         self.btn_min.setFlat(True)
         self.btn_setting = QPushButton(QIcon("images/setting.png"), '', self.btnsgroup)
-        self.btn_setting.setIconSize(QSize(16, 16))
         self.btn_setting.setFlat(True)
         grouplayout.addWidget(self.btn_setting)
         grouplayout.addWidget(self.btn_min)
@@ -42,6 +43,7 @@ class BaseTitle(QWidget):
         bg_hlayout.addStretch()
         bg_hlayout.addWidget(self.btnsgroup)
         bg_vlayout = QVBoxLayout(self.bg)
+        bg_vlayout.setContentsMargins(0, 0, 0, 0)
         bg_vlayout.addLayout(bg_hlayout)
         bg_vlayout.addStretch()
 
@@ -77,19 +79,19 @@ class TabsTitle(BaseTitle):
     def __init__(self, parent):
         BaseTitle.__init__(self, parent)
 
-        self.tabsgroup = QWidget(self)
-        hlayout = QHBoxLayout(self.tabsgroup)
+        # self.tabsgroup = QWidget(self)
+        # hlayout = QHBoxLayout(self.tabsgroup)
 
-        self.tab_uart = QPushButton(QIcon("images/close.png"), "", self.tabsgroup)
-        #self.tab_uart.setFixedSize(64, 64)
-        self.tab_gpio = QPushButton(QIcon("images/close.png"), "", self.tabsgroup)
-        #self.tab_gpio.setFixedSize(64, 64)
-        hlayout.addWidget(self.tab_uart)
-        hlayout.addWidget(self.tab_gpio)
-        self.tabsgroup.setGeometry(0, 20, 100, 80)
-        self.tabsgroup.setStyleSheet("""
-        background-image: url(images/close.png);
-                                     """)
+        # self.tab_uart = QPushButton(QIcon("images/close.png"), "", self.tabsgroup)
+        # #self.tab_uart.setFixedSize(64, 64)
+        # self.tab_gpio = QPushButton(QIcon("images/close.png"), "", self.tabsgroup)
+        # #self.tab_gpio.setFixedSize(64, 64)
+        # hlayout.addWidget(self.tab_uart)
+        # hlayout.addWidget(self.tab_gpio)
+        # self.tabsgroup.setGeometry(0, 20, 100, 80)
+        # self.tabsgroup.setStyleSheet("""
+        # background-image: url(images/close.png);
+        #                              """)
     
         
         
