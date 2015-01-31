@@ -33,15 +33,17 @@ class MainForm(QMainWindow):
         self.title = TabsTitle(self) # Drive the main window
         self.title.setFixedHeight(96)
         
-        self.content = Container(self.bg)
-        self.content.setBaseSize(100, 100)
-        #self.content.setStyleSheet("background-color: red")
+        self.container = Container(self.bg)
+        self.container.setBaseSize(100, 100)
 
         bg_vlayout = QVBoxLayout(self.bg)
         bg_vlayout.setContentsMargins(1, 1, 1, 1)
         bg_vlayout.setSpacing(0)
         bg_vlayout.addWidget(self.title)
-        bg_vlayout.addWidget(self.content)
+        bg_vlayout.addWidget(self.container)
+
+        # Connect tabs clicked signal & slot
+        self.title.tabs_signalmapper.mapped.connect(self.container.show_tab)
 
     def resizeEvent(self, event):
         self.setMask(QBitmap("images/main_bg.png"))

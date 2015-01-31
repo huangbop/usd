@@ -84,6 +84,13 @@ class TabsTitle(QWidget):
         self.btn_close.clicked.connect(self.mainform.close)
         self.btn_min.clicked.connect(self.mainform.showMinimized)
 
+        # Tabs signal map
+        self.tabs_signalmapper = QSignalMapper()
+        self.tabs_signalmapper.setMapping(self.tab_uart, 0)
+        self.tabs_signalmapper.setMapping(self.tab_gpio, 1)
+        self.tab_uart.clicked.connect(self.tabs_signalmapper.map)
+        self.tab_gpio.clicked.connect(self.tabs_signalmapper.map)
+        
     def layout_all(self):
         bg_hlayout = QHBoxLayout(self.bg)
         bg_hlayout.setContentsMargins(0, 0, 0, 0)
