@@ -30,12 +30,12 @@ class TabsTitle(QWidget):
         btns_layout.setContentsMargins(0, 0, 10, 50)
         self.btn_close = QToolButton(self.btnsgroup)
         self.btn_close.setFixedSize(QSize(24, 24))
-        self.btn_close.setAutoRaise(True)
+        self.btn_close.setStyleSheet("background-color: rgba(0, 0, 0, 0)")
         self.btn_close.setIcon(QIcon("images/close.png"))
         self.btn_close.setIconSize(QSize(24, 24))
         self.btn_min = QToolButton(self.btnsgroup)
         self.btn_min.setFixedSize(QSize(24, 24))
-        self.btn_min.setAutoRaise(True)
+        self.btn_min.setStyleSheet("background-color: rgba(0, 0, 0, 0)")
         self.btn_min.setIcon(QIcon("images/min.png"))
         self.btn_min.setIconSize(QSize(24, 24))
         self.btn_setting = QToolButton(self.btnsgroup)
@@ -54,14 +54,14 @@ class TabsTitle(QWidget):
         tabs_layout = QHBoxLayout(self.tabsgroup)
         tabs_layout.setContentsMargins(0, 16, 0, 0)
         self.tab_uart = QToolButton(self.tabsgroup)
-        self.tab_uart.setAutoRaise(True)
+        self.tab_uart.setStyleSheet("background-color: rgba(0, 0, 0, 0)")
         self.tab_uart.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.tab_uart.setIcon(QIcon("images/uart.png"))
         self.tab_uart.setIconSize(QSize(48, 48))
         self.tab_uart.setFixedSize(QSize(70, 70))
         self.tab_uart.setText("UART")
         self.tab_gpio = QToolButton(self.tabsgroup)
-        self.tab_gpio.setAutoRaise(True)
+        self.tab_gpio.setStyleSheet("background-color: rgba(0, 0, 0, 0)")
         self.tab_gpio.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.tab_gpio.setIcon(QIcon("images/gpio.png"))
         self.tab_gpio.setIconSize(QSize(48, 48))
@@ -70,6 +70,10 @@ class TabsTitle(QWidget):
         tabs_layout.addWidget(self.tab_uart)
         tabs_layout.addWidget(self.tab_gpio)
         tabs_layout.addStretch()
+        self.tabsgroup.setStyleSheet("""
+        color: rgb(80, 80, 80);
+        font: 8pt "verdana";
+        """)
         
         # Lay out all components
         self.layout_all()
