@@ -7,113 +7,95 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 
-class BaseTitle(QWidget):
-    """
-    """
-    def __init__(self, parent):
-        QWidget.__init__(self, parent) # Need parent
-        self.parent = parent
+class TabsTitle(QWidget):
+    def __init__(self, mainform):
+        QWidget.__init__(self, mainform)
+        self.mainform = mainform
 
-        # Always fills a background widget
         self.bg = QWidget(self)
         vlayout = QVBoxLayout(self)
         vlayout.setContentsMargins(0, 0, 0, 0)
         vlayout.addWidget(self.bg)
-        self.bg.setStyleSheet("""
-        background-color: yellow;
-        """)
-        
-        # Buttons group
-        self.btnsgroup = QWidget(self.parent) # 
-        self.btnsgroup.setFixedSize(96, 28)
-        grouplayout = QHBoxLayout(self.btnsgroup)
-        
-        self.btn_close = QPushButton(QIcon("images/close.png"), '', self.btnsgroup)
-        self.btn_close.setFlat(True)
-        self.btn_min = QPushButton(QIcon("images/min.png"), '', self.btnsgroup)
-        self.btn_min.setFlat(True)
-        self.btn_setting = QPushButton(QIcon("images/setting.png"), '', self.btnsgroup)
-        self.btn_setting.setFlat(True)
-        grouplayout.addWidget(self.btn_setting)
-        grouplayout.addWidget(self.btn_min)
-        grouplayout.addWidget(self.btn_close)
-
-        # Lay buttons group
-        bg_hlayout = QHBoxLayout()
-        bg_hlayout.addStretch()
-        bg_hlayout.addWidget(self.btnsgroup)
-        bg_vlayout = QVBoxLayout(self.bg)
-        bg_vlayout.setContentsMargins(0, 0, 0, 0)
-        bg_vlayout.addLayout(bg_hlayout)
-        bg_vlayout.addStretch()
-
-        # Set bg widget sytle
-        self.bg.setObjectName('basetitle')
-        self.bg.setStyleSheet("""#basetitle {
+        self.bg.setObjectName('tabstitle')
+        self.bg.setStyleSheet("""#tabstitle {
         background-color: qlineargradient(spread:pad,
         x1:0, y1:1, x2:0, y2:0,
         stop:0 rgb(208, 208, 208), stop:1 rgb(224, 224, 224));
         }""")
 
-        self.start_move = False
-        self.start_x = self.start_y = 0
+        # Buttons group
+        self.btnsgroup = QWidget(self.bg)
+        #self.btnsgroup.setStyleSheet("background-color: red")
+        btns_layout = QHBoxLayout(self.btnsgroup)
+        btns_layout.setContentsMargins(0, 0, 10, 50)
+        self.btn_close = QToolButton(self.btnsgroup)
+        self.btn_close.setFixedSize(QSize(24, 24))
+        self.btn_close.setAutoRaise(True)
+        self.btn_close.setIcon(QIcon("images/close.png"))
+        self.btn_close.setIconSize(QSize(24, 24))
+        self.btn_min = QToolButton(self.btnsgroup)
+        self.btn_min.setFixedSize(QSize(24, 24))
+        self.btn_min.setAutoRaise(True)
+        self.btn_min.setIcon(QIcon("images/min.png"))
+        self.btn_min.setIconSize(QSize(24, 24))
+        self.btn_setting = QToolButton(self.btnsgroup)
+        self.btn_setting.setFixedSize(QSize(28, 28))
+        self.btn_setting.setAutoRaise(True)
+        self.btn_setting.setIcon(QIcon("images/setting.png"))
+        self.btn_setting.setIconSize(QSize(24, 24))
+        self.btn_setting.setPopupMode(QToolButton.MenuButtonPopup)
+        self.btn_setting.setToolButtonStyle(Qt.ToolButtonIconOnly)
+        btns_layout.addWidget(self.btn_setting)
+        btns_layout.addWidget(self.btn_min)
+        btns_layout.addWidget(self.btn_close)
 
-        # Signals
-        self.btn_close.clicked.connect(self.parent.close)
-        self.btn_min.clicked.connect(self.parent.showMinimized)
+        # Tabs group
+        self.tabsgroup = QWidget(self.bg)
+        tabs_layout = QHBoxLayout(self.tabsgroup)
+        tabs_layout.setContentsMargins(0, 16, 0, 0)
+        self.tab_uart = QToolButton(self.tabsgroup)
+        self.tab_uart.setAutoRaise(True)
+        self.tab_uart.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+        self.tab_uart.setIcon(QIcon("images/uart.png"))
+        self.tab_uart.setIconSize(QSize(48, 48))
+        self.tab_uart.setFixedSize(QSize(70, 70))
+        self.tab_uart.setText("UART")
+        self.tab_gpio = QToolButton(self.tabsgroup)
+        self.tab_gpio.setAutoRaise(True)
+        self.tab_gpio.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+        self.tab_gpio.setIcon(QIcon("images/gpio.png"))
+        self.tab_gpio.setIconSize(QSize(48, 48))
+        self.tab_gpio.setFixedSize(QSize(70, 70))
+        self.tab_gpio.setText("GPIO")
+        tabs_layout.addWidget(self.tab_uart)
+        tabs_layout.addWidget(self.tab_gpio)
+        tabs_layout.addStretch()
+        
+        # Lay out all components
+        self.layout_all()
+
+        # Drive the main form
+        self.start_moving = False
+        self.start_x = self.start_y = 0
+        self.btn_close.clicked.connect(self.mainform.close)
+        self.btn_min.clicked.connect(self.mainform.showMinimized)
+
+    def layout_all(self):
+        bg_hlayout = QHBoxLayout(self.bg)
+        bg_hlayout.setContentsMargins(0, 0, 0, 0)
+        bg_hlayout.addSpacing(100)
+        bg_hlayout.addWidget(self.tabsgroup)
+        bg_hlayout.addWidget(self.btnsgroup)
 
     def mousePressEvent(self, event):
-        self.start_move = True
-        self.start_x = event.x() + 10 
-        self.start_y = event.y() + 10
+        self.start_moving = True
+        self.start_x = event.x()
+        self.start_y = event.y()
 
     def mouseReleaseEvent(self, event):
-        self.start_move = False
+        self.start_moving = False
 
     def mouseMoveEvent(self, event):
-        if self.start_move:
-            self.parent.move(event.globalX() - self.start_x, event.globalY() - self.start_y)
+        if self.start_moving:
+            self.mainform.move(event.globalX() - self.start_x, event.globalY() - self.start_y)
 
-    def raise_minclose(self):
-        self.btnsgroup.raise_()
-        
-
-class TabsTitle(BaseTitle):
-    def __init__(self, parent):
-        BaseTitle.__init__(self, parent)
-
-        self.bg = QWidget(self)
-        
-        self.tabsgroup = QWidget(self.bg)
-        self.tab_uart = QPushButton("UART", self.tabsgroup)
-        self.tab_gpio = QPushButton("GPIO", self.tabsgroup)
-        self.tab_register = QPushButton("REGISTER", self.tabsgroup)
-        hlayout = QHBoxLayout(self.tabsgroup)
-        hlayout.addWidget(self.tab_uart)
-        hlayout.addWidget(self.tab_gpio)
-        hlayout.addWidget(self.tab_register)
-        self.tabsgroup.setFixedSize(300, 80)
-        
-        # Lay tabsgroup
-        bg_hlayout = QHBoxLayout()
-        bg_hlayout.setContentsMargins(0, 0, 0, 0)
-        bg_hlayout.addSpacing(30)
-        bg_hlayout.addWidget(self.tabsgroup)
-        bg_hlayout.addStretch()
-        bg_vlayout = QVBoxLayout(self.bg)
-        bg_vlayout.setContentsMargins(0, 0, 0, 0)
-        bg_vlayout.addSpacing(8)
-        bg_vlayout.addLayout(bg_hlayout)
-        bg_vlayout.addStretch()
-
-    def resizeEvent(self, event):
-        self.bg.resize(event.size())
-        self.raise_minclose()
-        
-    
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    title = BaseTitle(None)
-    title.setWindowTitle('SSD Uart Diag Tool')
-    title.show()
-    sys.exit(app.exec_())

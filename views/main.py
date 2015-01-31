@@ -10,7 +10,7 @@ sys.path.append(BASE_DIR)
 
 import usd
 from usd.views import setting
-from usd.views.title import BaseTitle, TabsTitle
+from usd.views.title import TabsTitle
 from usd.views.container import Container
         
 
@@ -21,7 +21,7 @@ class MainForm(QMainWindow):
         QMainWindow.__init__(self, None, Qt.FramelessWindowHint)
 
         # This bg will all fill the main window's background
-        self.bg = QWidget(self)
+        self.bg = QWidget(self) 
         self.setCentralWidget(self.bg)
         self.bg.setObjectName("mainform_bg")
         self.bg.setStyleSheet("""
