@@ -1,10 +1,25 @@
 import os
 import sys
-    
+import random
+import string
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+
+class PrintThread(QThread):
+
+    yield_text = pyqtSignal(str)
+
+    def __init__(self):
+        QThread.__init__(self)
+
+    def run(self):
+        while True:
+            self.yield_text.emit(''.join(random.sample(string.printable, 90)))
+            self.msleep(100)
+        
 
 class UartForm(QWidget):
     def __init__(self, parent):
@@ -20,11 +35,13 @@ class UartForm(QWidget):
         # Left text browser
         self.text_browser = QTextBrowser(self.bg)
         self.text_browser.setFrameShape(QFrame.NoFrame)
+        self.text_browser.setReadOnly(False)
         self.text_browser.setStyleSheet("""
         background-color: qlineargradient(spread:pad,
         x1:0, y1:1, x2:0, y2:0,
         stop:0 rgb(208, 208, 208), stop:1 rgb(224, 224, 224));
         border-radius: 6px;
+        font: 11pt "Courier New";
         """)
 
         browser_vlayout = QVBoxLayout(self.text_browser)
@@ -55,17 +72,30 @@ class UartForm(QWidget):
         bg_hlayout.addWidget(self.text_browser)
         bg_hlayout.addWidget(self.btnsgroup)
         
-        
         # Connect signals
         self.btn_startstop.clicked.connect(self.startstop_clicked)
-        
+
+        # Print thread
+        self.print_thread = PrintThread()
+        self.print_thread.yield_text.connect(self.do_print)
 
     def startstop_clicked(self):
         if self.btn_startstop.text() == "START":
+            if not self.print_thread.isRunning():
+                self.print_thread.start()
+
             self.btn_startstop.setText("STOP")
             self.btn_startstop.setIcon(QIcon("images/stop.png"))
         else:
+            if self.print_thread.isRunning():
+                self.print_thread.terminate()
+                            
             self.btn_startstop.setText("START")
             self.btn_startstop.setIcon(QIcon("images/start.png"))
 
-
+    def do_print(self, str):
+        self.text_browser.append(str)
+        self.text_browser.verticalScrollBar().setSliderPosition(
+            self.text_browser.verticalScrollBar().maximum())
+        
+        
