@@ -29,17 +29,21 @@ class UartForm(QWidget):
         vlayout.setContentsMargins(0, 0, 0, 0)
         vlayout.addWidget(self.bg)
         self.bg.setObjectName("uartform_bg")
-        self.bg.setStyleSheet("#uartform_bg {background-color: white;}")
+        self.bg.setStyleSheet("""
+        #uartform_bg {
+        background-color: qlineargradient(spread:pad,
+        x1:0, y1:1, x2:0, y2:0,
+        stop:0 rgb(224, 224, 224), stop:1 rgb(240, 240, 240));
+        }
+        """)
 
         # Left text browser
         self.text_browser = QTextBrowser(self.bg)
         self.text_browser.setFrameShape(QFrame.NoFrame)
         self.text_browser.setReadOnly(False)
         self.text_browser.setStyleSheet("""
-        background-color: qlineargradient(spread:pad,
-        x1:0, y1:1, x2:0, y2:0,
-        stop:0 rgb(208, 208, 208), stop:1 rgb(224, 224, 224));
-        border-radius: 6px;
+        background-color: rgb(144, 144, 144);
+        border-radius: 4px;
         font: 11pt "Courier New";
         """)
 
