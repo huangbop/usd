@@ -2,9 +2,8 @@ import os
 import sys
 import random
     
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
 
 
 class TabsTitle(QWidget):

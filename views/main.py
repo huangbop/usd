@@ -1,9 +1,8 @@
 import os
 import sys
     
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 sys.path.append(BASE_DIR)

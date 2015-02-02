@@ -7,7 +7,7 @@
   <Language>en_US</Language>
   <Hash>bd1adb4a68aa9eeb2b9418c81bcffb11f912f74e</Hash>
   <ProgLanguage mixed="0">Python3</ProgLanguage>
-  <ProjectType>PyQt5</ProjectType>
+  <ProjectType>PyQt4</ProjectType>
   <Description>Memoright SSD uart diagnose tool</Description>
   <Version>1.0.0</Version>
   <Author>Huang Bo</Author>
