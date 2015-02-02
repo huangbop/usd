@@ -44,12 +44,8 @@ class UartForm(QWidget):
         font: 11pt "Courier New";
         """)
 
-        browser_vlayout = QVBoxLayout(self.text_browser)
-        browser_vlayout.addWidget(self.text_browser)
-
         # Right buttons
         self.btnsgroup = QWidget(self.bg)
-        #self.btnsgroup.setFixedWidth(100)
         btnsgroup_vlayout = QVBoxLayout(self.btnsgroup)
         self.btn_startstop = QToolButton(self.btnsgroup)
         self.btn_startstop.setStyleSheet("background-color: rgba(0, 0, 0, 0)")
