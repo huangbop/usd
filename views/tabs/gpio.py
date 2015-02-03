@@ -4,6 +4,7 @@ import sys
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 import pyqtgraph as pg
+import numpy as np
 
 
 class GpioForm(QWidget):
@@ -24,6 +25,8 @@ class GpioForm(QWidget):
         """)
 
         self.plotview = pg.PlotWidget(self.bg)
+        pg.setConfigOption('background', 'w')
+        pg.setConfigOption('foreground', 'k')
         self.plotview.setStyleSheet("""
         border-radius: 6px;
         """)
@@ -31,4 +34,10 @@ class GpioForm(QWidget):
         bg_hlayout = QHBoxLayout(self.bg)
         bg_hlayout.setContentsMargins(15, 10, 150, 10)
         bg_hlayout.addWidget(self.plotview)
+
+        # Plot
+        x = np.arange(100)
+        y = np.random.normal(size=(3, 100))
+        for i in range(3):
+            self.plotview.plot(x, y[i], pen=(i, 3))
 

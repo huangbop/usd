@@ -21,7 +21,7 @@ class StatusBar(QWidget):
         self.bg.setStyleSheet("""#statusbar {
         background-color: qlineargradient(spread:pad,
         x1:0, y1:1, x2:0, y2:0,
-        stop:0 rgb(208, 208, 208), stop:1 rgb(224, 224, 224));
+        stop:0 rgb(192, 192, 192), stop:1 rgb(192, 192, 192));
         }""")
 
 class Container(QWidget):

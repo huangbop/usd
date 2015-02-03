@@ -20,7 +20,7 @@ class MainForm(QMainWindow):
         QMainWindow.__init__(self, None, Qt.FramelessWindowHint)
 
         # This bg will all fill the main window's background
-        self.bg = QWidget(self) 
+        self.bg = QWidget(self)     
         self.setCentralWidget(self.bg)
         self.bg.setObjectName("mainform_bg")
         self.bg.setStyleSheet("""

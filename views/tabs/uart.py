@@ -42,7 +42,7 @@ class UartForm(QWidget):
         self.text_browser.setFrameShape(QFrame.NoFrame)
         self.text_browser.setReadOnly(False)
         self.text_browser.setStyleSheet("""
-        background-color: rgb(144, 144, 144);
+        background-color: rgb(160, 160, 160);
         border-radius: 4px;
         font: 11pt "Courier New";
         """)
