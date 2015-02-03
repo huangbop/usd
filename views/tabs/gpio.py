@@ -5,7 +5,7 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 import pyqtgraph as pg
 import numpy as np
-
+from numpy import random
 
 class GpioForm(QWidget):
     def __init__(self, parent):
@@ -24,20 +24,26 @@ class GpioForm(QWidget):
         }
         """)
 
-        self.plotview = pg.PlotWidget(self.bg)
+        self.plot_widget = pg.PlotWidget(self.bg)
         pg.setConfigOption('background', 'w')
         pg.setConfigOption('foreground', 'k')
-        self.plotview.setStyleSheet("""
+        self.plot_widget.setStyleSheet("""
         border-radius: 6px;
         """)
         
         bg_hlayout = QHBoxLayout(self.bg)
         bg_hlayout.setContentsMargins(15, 10, 150, 10)
-        bg_hlayout.addWidget(self.plotview)
+        bg_hlayout.addWidget(self.plot_widget)
 
-        # Plot
-        x = np.arange(100)
-        y = np.random.normal(size=(3, 100))
-        for i in range(3):
-            self.plotview.plot(x, y[i], pen=(i, 3))
+        # Timer Plot
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.update_plot)
+        self.timer.start(100)
 
+        self.data = random.randint(0, 2, 20)
+        
+    def update_plot(self):
+        self.data[:-1] = self.data[1:]
+        self.data[-1] = random.randint(0, 2)
+        self.plot_widget.plot(self.data, clear=True)
+        
