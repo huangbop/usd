@@ -24,26 +24,32 @@ class GpioForm(QWidget):
         }
         """)
 
-        self.plot_widget = pg.PlotWidget(self.bg)
-        pg.setConfigOption('background', 'w')
-        pg.setConfigOption('foreground', 'k')
-        self.plot_widget.setStyleSheet("""
-        border-radius: 6px;
-        """)
-        
+        self.plotwidget = pg.PlotWidget(self.bg)
+        self.plotitem = self.plotwidget.getPlotItem()
+        self.plotitem.setClipToView(True)
+        self.plotitem.setXRange(0, 100)
+        self.plotitem.setLabel("bottom", "Time", "s")
+
         bg_hlayout = QHBoxLayout(self.bg)
         bg_hlayout.setContentsMargins(15, 10, 150, 10)
-        bg_hlayout.addWidget(self.plot_widget)
+        bg_hlayout.addWidget(self.plotwidget)
 
         # Timer Plot
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_plot)
         self.timer.start(100)
 
-        self.data = random.randint(0, 2, 20)
+        self.data = []
+        self.curves = []
+        for i in range(8):
+            d = np.empty((100, 2), int)
+            self.data.append(d)
+            curve = self.plotitem.plot(pen=(255, 0, 0))
+            self.curves.append(curve)
+            
         
     def update_plot(self):
-        self.data[:-1] = self.data[1:]
-        self.data[-1] = random.randint(0, 2)
-        self.plot_widget.plot(self.data, clear=True)
-        
+        for i in range(8):
+            self.data[i][:,0] = range(100)
+            self.data[i][:,1] = np.random.randint(0, 2, 100) + i * 2
+            self.curves[i].setData(self.data[i], pen=(i * 20, 255, 0))
