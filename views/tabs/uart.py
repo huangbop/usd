@@ -38,9 +38,10 @@ class UartForm(QWidget):
         """)
 
         # Left text browser
-        self.text_browser = QTextBrowser(self.bg)
+        self.text_browser = QPlainTextEdit(self.bg)
         self.text_browser.setFrameShape(QFrame.NoFrame)
         self.text_browser.setReadOnly(False)
+        self.text_browser.setMaximumBlockCount(5000)
         self.text_browser.setStyleSheet("""
         background-color: rgb(160, 160, 160);
         border-radius: 4px;
@@ -93,7 +94,7 @@ class UartForm(QWidget):
             self.btn_startstop.setIcon(QIcon("images/start.png"))
 
     def do_print(self, str):
-        self.text_browser.append(str)
+        self.text_browser.appendPlainText(str)
         self.text_browser.verticalScrollBar().setSliderPosition(
             self.text_browser.verticalScrollBar().maximum())
         
