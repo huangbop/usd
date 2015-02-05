@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui/uart.ui'
+# Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\uart.ui'
 #
-# Created: Thu Feb  5 17:26:12 2015
+# Created: Thu Feb  5 18:34:48 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!

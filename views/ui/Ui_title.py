@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui/titile.ui'
+# Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\title.ui'
 #
-# Created: Thu Feb  5 17:26:12 2015
+# Created: Thu Feb  5 18:34:48 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -50,7 +50,7 @@ class Ui_title(object):
         self.toolButton.setMinimumSize(QtCore.QSize(23, 0))
         self.toolButton.setText(_fromUtf8(""))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("../images/setting.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/images/images/setting.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolButton.setIcon(icon)
         self.toolButton.setIconSize(QtCore.QSize(18, 18))
         self.toolButton.setPopupMode(QtGui.QToolButton.MenuButtonPopup)
@@ -58,36 +58,36 @@ class Ui_title(object):
         self.toolButton.setArrowType(QtCore.Qt.NoArrow)
         self.toolButton.setObjectName(_fromUtf8("toolButton"))
         self.horizontalLayout.addWidget(self.toolButton)
-        self.pushButton_2 = QtGui.QPushButton(title)
+        self.btn_min = QtGui.QPushButton(title)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
-        self.pushButton_2.setSizePolicy(sizePolicy)
-        self.pushButton_2.setMinimumSize(QtCore.QSize(28, 28))
-        self.pushButton_2.setText(_fromUtf8(""))
+        sizePolicy.setHeightForWidth(self.btn_min.sizePolicy().hasHeightForWidth())
+        self.btn_min.setSizePolicy(sizePolicy)
+        self.btn_min.setMinimumSize(QtCore.QSize(28, 28))
+        self.btn_min.setText(_fromUtf8(""))
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(_fromUtf8("../images/min.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_2.setIcon(icon1)
-        self.pushButton_2.setIconSize(QtCore.QSize(24, 24))
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        self.horizontalLayout.addWidget(self.pushButton_2)
-        self.pushButton = QtGui.QPushButton(title)
-        self.pushButton.setEnabled(True)
+        icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/images/images/min.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_min.setIcon(icon1)
+        self.btn_min.setIconSize(QtCore.QSize(24, 24))
+        self.btn_min.setObjectName(_fromUtf8("btn_min"))
+        self.horizontalLayout.addWidget(self.btn_min)
+        self.btn_close = QtGui.QPushButton(title)
+        self.btn_close.setEnabled(True)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy)
-        self.pushButton.setMinimumSize(QtCore.QSize(28, 28))
-        self.pushButton.setBaseSize(QtCore.QSize(28, 28))
-        self.pushButton.setText(_fromUtf8(""))
+        sizePolicy.setHeightForWidth(self.btn_close.sizePolicy().hasHeightForWidth())
+        self.btn_close.setSizePolicy(sizePolicy)
+        self.btn_close.setMinimumSize(QtCore.QSize(28, 28))
+        self.btn_close.setBaseSize(QtCore.QSize(28, 28))
+        self.btn_close.setText(_fromUtf8(""))
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(_fromUtf8("../images/close.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon2)
-        self.pushButton.setIconSize(QtCore.QSize(24, 24))
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.horizontalLayout.addWidget(self.pushButton)
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/images/images/close.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_close.setIcon(icon2)
+        self.btn_close.setIconSize(QtCore.QSize(24, 24))
+        self.btn_close.setObjectName(_fromUtf8("btn_close"))
+        self.horizontalLayout.addWidget(self.btn_close)
         self.verticalLayout.addLayout(self.horizontalLayout)
         spacerItem3 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem3)
@@ -99,6 +99,7 @@ class Ui_title(object):
     def retranslateUi(self, title):
         title.setWindowTitle(_translate("title", "Form", None))
 
+import usd_rc
 
 if __name__ == "__main__":
     import sys

@@ -5,14 +5,14 @@ import random
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
-from usd.views.ui import Ui_title
+from usd.views.ui.Ui_title import Ui_title
 
 
-class TabsTitle(QWidget):
+class TitleForm (QWidget, Ui_title):
     def __init__(self, mainform):
         QWidget.__init__(self, mainform)
         self.mainform = mainform
-
+        self.setupUi(self)
 
         # Drive the main form
         self.start_moving = False

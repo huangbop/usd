@@ -9,6 +9,7 @@ sys.path.append(BASE_DIR)
 
 import usd
 from usd.views import setting
+from usd.views.title import TitleForm
 
 
 class MainForm(QMainWindow):
@@ -24,6 +25,10 @@ class MainForm(QMainWindow):
         bg_vlayout = QVBoxLayout(self.bg)
         bg_vlayout.setContentsMargins(1, 1, 1, 1)
         bg_vlayout.setSpacing(0)
+
+        self.title = TitleForm(self)
+        bg_vlayout.addWidget(self.title)
+        
 
     def resizeEvent(self, event):
         self.setMask(QBitmap("images/main_bg.png"))

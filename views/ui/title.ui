@@ -85,8 +85,8 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>../images/setting.png</normaloff>../images/setting.png</iconset>
+          <iconset resource="../usd.qrc">
+           <normaloff>:/images/images/setting.png</normaloff>:/images/images/setting.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -106,7 +106,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="btn_min">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -123,8 +123,8 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>../images/min.png</normaloff>../images/min.png</iconset>
+          <iconset resource="../usd.qrc">
+           <normaloff>:/images/images/min.png</normaloff>:/images/images/min.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -135,7 +135,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="btn_close">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -161,8 +161,8 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>../images/close.png</normaloff>../images/close.png</iconset>
+          <iconset resource="../usd.qrc">
+           <normaloff>:/images/images/close.png</normaloff>:/images/images/close.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -191,6 +191,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../usd.qrc"/>
+ </resources>
  <connections/>
 </ui>
