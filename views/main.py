@@ -10,6 +10,8 @@ sys.path.append(BASE_DIR)
 import usd
 from usd.views import setting
 from usd.views.title import TitleForm
+from usd.views.status import StatusForm
+from usd.views.moti import MotiView
 
 
 class MainForm(QMainWindow):
@@ -21,14 +23,32 @@ class MainForm(QMainWindow):
         # This bg will all fill the main window's background
         self.bg = QWidget(self)     
         self.setCentralWidget(self.bg)
+        self.bg.setObjectName("main_bg")
+        self.bg.setStyleSheet("""
+        #main_bg {
+        background-color: rgb(208, 208, 208);
+        }
+        """)
 
         bg_vlayout = QVBoxLayout(self.bg)
         bg_vlayout.setContentsMargins(1, 1, 1, 1)
         bg_vlayout.setSpacing(0)
 
+        # Title
         self.title = TitleForm(self)
-        bg_vlayout.addWidget(self.title)
+        self.title.setFixedHeight(90)
+
+        # Moti
+        self.moti = MotiView(self)
+        self.moti.setFrameShape(QFrame.NoFrame)
         
+        # Status
+        self.status = StatusForm(self)
+        self.status.setFixedHeight(30)
+        
+        bg_vlayout.addWidget(self.title)
+        bg_vlayout.addWidget(self.moti)
+        bg_vlayout.addWidget(self.status)
 
     def resizeEvent(self, event):
         self.setMask(QBitmap("images/main_bg.png"))

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\gpio.ui'
+# Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\_tmp.ui'
 #
-# Created: Fri Feb  6 13:46:24 2015
+# Created: Fri Feb  6 14:48:35 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,17 +26,19 @@ except AttributeError:
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(537, 404)
-        self.pushButton = QtGui.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(250, 230, 75, 23))
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        Form.resize(707, 435)
+        self.horizontalLayout = QtGui.QHBoxLayout(Form)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.graphicsView = QtGui.QGraphicsView(Form)
+        self.graphicsView.setFrameShape(QtGui.QFrame.NoFrame)
+        self.graphicsView.setObjectName(_fromUtf8("graphicsView"))
+        self.horizontalLayout.addWidget(self.graphicsView)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Form", None))
-        self.pushButton.setText(_translate("Form", "PushButton", None))
 
 
 if __name__ == "__main__":

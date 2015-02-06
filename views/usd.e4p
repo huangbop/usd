@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project usd -->
-<!-- Saved: 2015-02-05, 16:20:49 -->
+<!-- Saved: 2015-02-06, 13:14:57 -->
 <!-- Copyright (C) 2015 Huang Bo, huangbo@memoright.com -->
 <Project version="5.1">
   <Language>en_US</Language>
@@ -12,6 +12,7 @@
   <Version>1.0.0</Version>
   <Author>Huang Bo</Author>
   <Email>huangbo@memoright.com</Email>
+  <Eol index="-1"/>
   <Sources>
     <Source>main.py</Source>
     <Source>moti/__init__.py</Source>
@@ -20,10 +21,22 @@
     <Source>title.py</Source>
     <Source>ui/__init__.py</Source>
     <Source>__init__.py</Source>
+    <Source>ui/Ui_gpio.py</Source>
+    <Source>ui/Ui_uart.py</Source>
+    <Source>ui/Ui_title.py</Source>
+    <Source>usd_rc.py</Source>
+    <Source>ui/Ui_status.py</Source>
   </Sources>
-  <Forms/>
+  <Forms>
+    <Form>ui/gpio.ui</Form>
+    <Form>ui/title.ui</Form>
+    <Form>ui/uart.ui</Form>
+    <Form>ui/status.ui</Form>
+  </Forms>
   <Translations/>
-  <Resources/>
+  <Resources>
+    <Resource>usd.qrc</Resource>
+  </Resources>
   <Interfaces/>
   <Others/>
   <Vcs>

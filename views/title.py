@@ -6,9 +6,10 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
 from usd.views.ui.Ui_title import Ui_title
+from usd.views.setting import title_style
 
 
-class TitleForm (QWidget, Ui_title):
+class TitleForm(QWidget, Ui_title):
     def __init__(self, mainform):
         QWidget.__init__(self, mainform)
         self.mainform = mainform
@@ -20,6 +21,8 @@ class TitleForm (QWidget, Ui_title):
         self.btn_close.clicked.connect(self.mainform.close)
         self.btn_min.clicked.connect(self.mainform.showMinimized)
 
+        # Set stylesheet
+        self.setStyleSheet(title_style)
 
     def mousePressEvent(self, event):
         self.start_moving = True
