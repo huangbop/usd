@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\_tmp.ui'
+# Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui/_tmp.ui'
 #
-# Created: Fri Feb  6 14:48:35 2015
+# Created: Fri Feb  6 17:43:39 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
