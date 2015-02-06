@@ -34,3 +34,8 @@ background-color: rgb(192, 192, 192);
 
 """
 
+tabs_style = """
+#bg {
+background-color: white;
+}
+"""

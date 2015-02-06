@@ -12,6 +12,7 @@ from usd.views import setting
 from usd.views.title import TitleForm
 from usd.views.status import StatusForm
 from usd.views.moti import MotiView
+from usd.views.tabs.uart import UartForm
 
 
 class MainForm(QMainWindow):
@@ -42,6 +43,9 @@ class MainForm(QMainWindow):
         self.moti = MotiView(self)
         self.moti.setFrameShape(QFrame.NoFrame)
         
+        self.uart_form = UartForm(None) # Must toplevel widget
+        self.moti.addTab(self.uart_form)
+
         # Status
         self.status = StatusForm(self)
         self.status.setFixedHeight(30)
