@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>549</width>
-    <height>199</height>
+    <width>557</width>
+    <height>258</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -81,6 +81,32 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
+           <widget class="QToolButton" name="tab_config">
+            <property name="minimumSize">
+             <size>
+              <width>70</width>
+              <height>70</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>CONFIG</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../usd.qrc">
+              <normaloff>:/images/images/config.png</normaloff>:/images/images/config.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>48</width>
+              <height>48</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QToolButton" name="tab_uart">
             <property name="minimumSize">
              <size>
@@ -120,6 +146,32 @@
             <property name="icon">
              <iconset resource="../usd.qrc">
               <normaloff>:/images/images/gpio.png</normaloff>:/images/images/gpio.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>48</width>
+              <height>48</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tab_register">
+            <property name="minimumSize">
+             <size>
+              <width>70</width>
+              <height>70</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>REGISTER</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../usd.qrc">
+              <normaloff>:/images/images/register.png</normaloff>:/images/images/register.png</iconset>
             </property>
             <property name="iconSize">
              <size>
