@@ -67,6 +67,9 @@ class MainForm(QMainWindow):
         bg_vlayout.addWidget(self.moti)
         bg_vlayout.addWidget(self.status)
 
+        # Connect tabs clicked signal & slot
+        self.title.tabs_signalmapper.mapped.connect(self.moti.showTab)
+
     def resizeEvent(self, event):
         self.setMask(QBitmap("images/main_bg.png"))
 

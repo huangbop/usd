@@ -24,6 +24,36 @@ class TitleForm(QWidget, Ui_title):
         # Set stylesheet
         self.setStyleSheet(title_style)
 
+        # Tabs signal map
+        self.tabs = [self.tab_config, self.tab_uart,
+                     self.tab_gpio, self.tab_register]
+
+        self.tabs_signalmapper = QSignalMapper()
+        self.tabs_signalmapper.setMapping(self.tab_config, 0)
+        self.tabs_signalmapper.setMapping(self.tab_uart, 1)
+        self.tabs_signalmapper.setMapping(self.tab_gpio, 2)
+        self.tabs_signalmapper.setMapping(self.tab_register, 3)
+        self.tab_config.clicked.connect(self.tabs_signalmapper.map)
+        self.tab_uart.clicked.connect(self.tabs_signalmapper.map)
+        self.tab_gpio.clicked.connect(self.tabs_signalmapper.map)
+        self.tab_register.clicked.connect(self.tabs_signalmapper.map)
+        
+        self.tab_clicked(0)
+
+        # Connect tabs clicked signal & slot
+        self.tabs_signalmapper.mapped.connect(self.tab_clicked)
+
+    def tab_clicked(self, ix):
+        for tab in self.tabs:
+            tab.setStyleSheet("background-color: rgba(0, 0, 0, 0)")
+        self.tabs[ix].setStyleSheet("""
+        border: none;
+        border-radius: 6px;
+        background-color: qlineargradient(spread:pad,
+        x1:0, y1:1, x2:0, y2:0,
+        stop:0 rgb(208, 208, 208), stop:1 rgb(176, 176, 176)); 
+        """)
+        
     def mousePressEvent(self, event):
         self.start_moving = True
         self.start_x = event.x()
