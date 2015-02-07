@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\gpio.ui'
+# Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\register.ui'
 #
-# Created: Sat Feb  7 20:09:14 2015
+# Created: Sat Feb  7 20:16:51 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,31 +23,29 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_gpio(object):
-    def setupUi(self, gpio):
-        gpio.setObjectName(_fromUtf8("gpio"))
-        gpio.resize(615, 520)
-        self.horizontalLayout = QtGui.QHBoxLayout(gpio)
+class Ui_register_(object):
+    def setupUi(self, register_):
+        register_.setObjectName(_fromUtf8("register_"))
+        register_.resize(680, 467)
+        self.horizontalLayout = QtGui.QHBoxLayout(register_)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setMargin(0)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.bg = QtGui.QWidget(gpio)
+        self.bg = QtGui.QWidget(register_)
         self.bg.setObjectName(_fromUtf8("bg"))
         self.horizontalLayout_2 = QtGui.QHBoxLayout(self.bg)
         self.horizontalLayout_2.setSpacing(30)
         self.horizontalLayout_2.setContentsMargins(15, 15, 30, 15)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
-        self.groupBox = QtGui.QGroupBox(self.bg)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.groupBox.sizePolicy().hasHeightForWidth())
-        self.groupBox.setSizePolicy(sizePolicy)
-        self.groupBox.setTitle(_fromUtf8(""))
-        self.groupBox.setObjectName(_fromUtf8("groupBox"))
-        self.horizontalLayout_2.addWidget(self.groupBox)
+        self.tableWidget = QtGui.QTableWidget(self.bg)
+        self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
+        self.tableWidget.setColumnCount(0)
+        self.tableWidget.setRowCount(0)
+        self.horizontalLayout_2.addWidget(self.tableWidget)
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem)
         self.pushButton = QtGui.QPushButton(self.bg)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -57,8 +55,6 @@ class Ui_gpio(object):
         self.pushButton.setMinimumSize(QtCore.QSize(80, 30))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
         self.verticalLayout.addWidget(self.pushButton)
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem)
         self.pushButton_2 = QtGui.QPushButton(self.bg)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -71,21 +67,21 @@ class Ui_gpio(object):
         self.horizontalLayout_2.addLayout(self.verticalLayout)
         self.horizontalLayout.addWidget(self.bg)
 
-        self.retranslateUi(gpio)
-        QtCore.QMetaObject.connectSlotsByName(gpio)
+        self.retranslateUi(register_)
+        QtCore.QMetaObject.connectSlotsByName(register_)
 
-    def retranslateUi(self, gpio):
-        gpio.setWindowTitle(_translate("gpio", "Form", None))
-        self.pushButton.setText(_translate("gpio", "Acquire", None))
-        self.pushButton_2.setText(_translate("gpio", "Export", None))
+    def retranslateUi(self, register_):
+        register_.setWindowTitle(_translate("register_", "Form", None))
+        self.pushButton.setText(_translate("register_", "Read", None))
+        self.pushButton_2.setText(_translate("register_", "Write", None))
 
 
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
-    gpio = QtGui.QWidget()
-    ui = Ui_gpio()
-    ui.setupUi(gpio)
-    gpio.show()
+    register_ = QtGui.QWidget()
+    ui = Ui_register_()
+    ui.setupUi(register_)
+    register_.show()
     sys.exit(app.exec_())
 

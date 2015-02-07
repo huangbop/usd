@@ -64,5 +64,12 @@ stop:0 rgb(208, 208, 208), stop:1 rgb(224, 224, 224));
 QPushButton:pressed {
 border-width: 4px;
 }
+
+QPushButton:disabled {
+background-color: qlineargradient(spread:pad,
+x1:0, y1:1, x2:0, y2:0,
+stop:0 rgb(240, 240, 240), stop:1 rgb(240, 240, 240));
+}
+
 """
 

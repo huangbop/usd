@@ -23,6 +23,8 @@ class MotiView(QGraphicsView):
         tab = self.scene.addWidget(widget)
         self.tabs.append(tab)
 
+    def showTab(self, index):
+        pass
 
     def resizeEvent(self, event):
         size = event.size()     # QSize

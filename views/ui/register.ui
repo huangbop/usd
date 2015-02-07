@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>gpio</class>
- <widget class="QWidget" name="gpio">
+ <class>register_</class>
+ <widget class="QWidget" name="register_">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>615</width>
-    <height>520</height>
+    <width>680</width>
+    <height>467</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -48,20 +48,23 @@
        <number>15</number>
       </property>
       <item>
-       <widget class="QGroupBox" name="groupBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="title">
-         <string/>
-        </property>
-       </widget>
+       <widget class="QTableWidget" name="tableWidget"/>
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item>
          <widget class="QPushButton" name="pushButton">
           <property name="sizePolicy">
@@ -77,22 +80,9 @@
            </size>
           </property>
           <property name="text">
-           <string>Acquire</string>
+           <string>Read</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_2">
@@ -109,7 +99,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Export</string>
+           <string>Write</string>
           </property>
          </widget>
         </item>

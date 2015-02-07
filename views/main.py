@@ -12,7 +12,10 @@ from usd.views import setting
 from usd.views.title import TitleForm
 from usd.views.status import StatusForm
 from usd.views.moti import MotiView
+from usd.views.tabs.config import ConfigForm
 from usd.views.tabs.uart import UartForm
+from usd.views.tabs.gpio import GpioForm
+from usd.views.tabs.register import RegisterForm
 
 
 class MainForm(QMainWindow):
@@ -42,9 +45,19 @@ class MainForm(QMainWindow):
         # Moti
         self.moti = MotiView(self)
         self.moti.setFrameShape(QFrame.NoFrame)
+
+        # Tab forms
+        self.config_form = ConfigForm(None) # Must toplevel widget
+        self.moti.addTab(self.config_form)
         
         self.uart_form = UartForm(None) # Must toplevel widget
         self.moti.addTab(self.uart_form)
+        
+        self.gpio_form = GpioForm(None) # Must toplevel widget
+        self.moti.addTab(self.gpio_form)
+        
+        self.register_form = RegisterForm(None) # Must toplevel widget
+        self.moti.addTab(self.register_form)
 
         # Status
         self.status = StatusForm(self)

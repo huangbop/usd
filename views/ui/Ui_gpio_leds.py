@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui/gpio_leds.ui'
 #
-# Created: Sat Feb  7 18:02:24 2015
+# Created: Sat Feb  7 20:09:16 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
