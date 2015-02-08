@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\gpio.ui'
 #
-# Created: Sat Feb  7 20:09:14 2015
+# Created: Sun Feb  8 23:51:37 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,15 +37,14 @@ class Ui_gpio(object):
         self.horizontalLayout_2.setSpacing(30)
         self.horizontalLayout_2.setContentsMargins(15, 15, 30, 15)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
-        self.groupBox = QtGui.QGroupBox(self.bg)
+        self.plot_bg = QtGui.QWidget(self.bg)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.groupBox.sizePolicy().hasHeightForWidth())
-        self.groupBox.setSizePolicy(sizePolicy)
-        self.groupBox.setTitle(_fromUtf8(""))
-        self.groupBox.setObjectName(_fromUtf8("groupBox"))
-        self.horizontalLayout_2.addWidget(self.groupBox)
+        sizePolicy.setHeightForWidth(self.plot_bg.sizePolicy().hasHeightForWidth())
+        self.plot_bg.setSizePolicy(sizePolicy)
+        self.plot_bg.setObjectName(_fromUtf8("plot_bg"))
+        self.horizontalLayout_2.addWidget(self.plot_bg)
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.pushButton = QtGui.QPushButton(self.bg)
