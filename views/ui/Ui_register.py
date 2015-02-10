@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\register.ui'
 #
-# Created: Sat Feb  7 20:16:51 2015
+# Created: Tue Feb 10 22:39:53 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!

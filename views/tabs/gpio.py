@@ -13,45 +13,24 @@ from usd.views.setting import tabs_style
 from usd.views.setting import colors
 
 
-class LedsView(QGraphicsView):
+class LedsBar(QWidget):
     def __init__(self, parent):
-        QGraphicsView.__init__(self, parent)
+        QWidget.__init__(self, parent)
 
-        self.scene = QGraphicsScene(self)
-        self.setScene(self.scene)
-
-        self._status = []
-
-        self.brushes = [QBrush(QColor(c[0], c[1], c[2], c[3])) for c in colors]
         self.leds = []
-        for i in range(len(self.brushes) - 1):
-            led = self.scene.addEllipse(0, 0, 2, 2, QPen(QColor(176, 176, 176, 255)),
-                                        self.brushes[-1])
-            self.leds.append(led)
+        hlayout = QHBoxLayout(self)
+        for i in range(len(colors) - 1):
+            tb = QToolButton(self)
+            tb.setFixedSize(20, 20)
+            tb.setStyleSheet("""
+            border: 1px solid rgb(160, 160, 160);
+            border-radius: 10px;
+            background-color: rgb%s;
+            """ % str(colors[-1]))
+            hlayout.addWidget(tb)
+            self.leds.append(tb)
 
-    @property
-    def status(self):
-        return self._status
-
-    @status.setter
-    def status(self, values):
-        d = len(values) - len(self.leds)
-        if d > 0:
-            values = values[:-d]
-        for i, v in enumerate(values):
-            self.leds[i].setBrush(self.brushes[i] if v else self.brushes[-1])        
-
-    def resizeEvent(self, event):
-        size = event.size()     # QSize
-        w = size.width()
-        h = size.height()
-        self.scene.setSceneRect(0, 0, w, h)
-        # Lay out leds
-        deltax = w / len(self.leds)
-        for i, led in enumerate(self.leds):
-            led.setRect(i*deltax + deltax/2, 0, h, h)
-
-        self.status = (0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0)
+        
         
 
 class GpioPlotView(pg.PlotWidget):
@@ -86,13 +65,10 @@ class GpioForm(QWidget, Ui_gpio):
         self.setStyleSheet(tabs_style)
 
         # Leds
-        self.ledsview = LedsView(self.leds_bg)
-        self.ledsview.setStyleSheet("""
-        border: none;
-        """)
+        self.ledsbar = LedsBar(self.leds_bg)
         ledsbg_hlayout = QHBoxLayout(self.leds_bg)
         ledsbg_hlayout.setContentsMargins(0, 0, 0, 0)
-        ledsbg_hlayout.addWidget(self.ledsview)
+        ledsbg_hlayout.addWidget(self.ledsbar)
         
         # Plot view
         self.plotview = GpioPlotView(self.plot_bg)
@@ -109,18 +85,7 @@ class GpioForm(QWidget, Ui_gpio):
         # Signals
         self.btn_acquire.clicked.connect(self.timer.start)
 
-        self.led = QToolButton(self)
-        self.led.setGeometry(0, 0, 20, 20)
-        self.led.setStyleSheet("""
-        background-color: qlineargradient(spread:pad,
-        x1:0, y1:1, x2:0, y2:0,
-        stop:0 rgb(160, 0, 0), stop:1 rgb(224, 0, 0));
-        border-radius: 10px;
-        """)
-        
-
     def yield_values(self):
         sts = [random.choice([0, 1]) for i in range(8)]
         self.plotview.update(sts)
-        self.ledsview.status = sts
 

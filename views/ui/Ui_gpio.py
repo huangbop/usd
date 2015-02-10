@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\gpio.ui'
 #
-# Created: Tue Feb 10 15:54:48 2015
+# Created: Tue Feb 10 22:40:53 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -46,13 +46,13 @@ class Ui_gpio(object):
         spacerItem = QtGui.QSpacerItem(80, 20, QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.leds_bg = QtGui.QWidget(self.bg)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.leds_bg.sizePolicy().hasHeightForWidth())
         self.leds_bg.setSizePolicy(sizePolicy)
-        self.leds_bg.setMinimumSize(QtCore.QSize(0, 5))
-        self.leds_bg.setMaximumSize(QtCore.QSize(16777215, 10))
+        self.leds_bg.setMinimumSize(QtCore.QSize(0, 10))
+        self.leds_bg.setMaximumSize(QtCore.QSize(16777215, 60))
         self.leds_bg.setObjectName(_fromUtf8("leds_bg"))
         self.horizontalLayout_2.addWidget(self.leds_bg)
         spacerItem1 = QtGui.QSpacerItem(80, 20, QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
