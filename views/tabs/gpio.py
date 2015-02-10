@@ -17,21 +17,36 @@ class LedsBar(QWidget):
     def __init__(self, parent):
         QWidget.__init__(self, parent)
 
+        self.qss = """
+        border: 1px solid rgb(208, 208, 208);
+        border-radius: 10px;
+        background-color: rgb%s;
+        """
         self.leds = []
         hlayout = QHBoxLayout(self)
         for i in range(len(colors) - 1):
             tb = QToolButton(self)
             tb.setFixedSize(20, 20)
-            tb.setStyleSheet("""
-            border: 1px solid rgb(160, 160, 160);
-            border-radius: 10px;
-            background-color: rgb%s;
-            """ % str(colors[-1]))
+            tb.setStyleSheet(self.qss % str(colors[-1]))
             hlayout.addWidget(tb)
             self.leds.append(tb)
 
-        
-        
+        self._status = [0 for i in range(len(colors) - 1)]
+
+    @property
+    def status(self):
+        return self._status
+
+    @status.setter
+    def status(self, v):
+        self._status = v
+
+        for i, s in enumerate(self._status):
+            if s:
+                self.leds[i].setStyleSheet(self.qss % str(colors[i]))
+            else:
+                self.leds[i].setStyleSheet(self.qss % str(colors[-1]))
+
 
 class GpioPlotView(pg.PlotWidget):
     def __init__(self, parent):
@@ -88,4 +103,6 @@ class GpioForm(QWidget, Ui_gpio):
     def yield_values(self):
         sts = [random.choice([0, 1]) for i in range(8)]
         self.plotview.update(sts)
+        self.ledsbar.status = sts
+        
 
