@@ -11,7 +11,6 @@ import usd
 from usd.views import setting
 from usd.views.title import TitleForm
 from usd.views.status import StatusForm
-from usd.views.moti import MotiView
 from usd.views.tabs.config import ConfigForm
 from usd.views.tabs.uart import UartForm
 from usd.views.tabs.gpio import GpioForm
@@ -42,39 +41,40 @@ class MainForm(QMainWindow):
         self.title = TitleForm(self)
         self.title.setFixedHeight(90)
 
-        # Moti
-        self.moti = MotiView(self)
-        self.moti.setFrameShape(QFrame.NoFrame)
+        # Scene & tabs
+        self.scene = QWidget(self)
+                
+        self.config_form = ConfigForm(self)
+        self.uart_form = UartForm(self)
+        self.gpio_form = GpioForm(self)
+        self.register_form = RegisterForm(self)
 
-        # Tab forms
-        self.config_form = ConfigForm(None) # Must toplevel widget
-        self.moti.addTab(self.config_form)
-        
-        self.uart_form = UartForm(None) # Must toplevel widget
-        self.moti.addTab(self.uart_form)
-        
-        self.gpio_form = GpioForm(None) # Must toplevel widget
-        self.moti.addTab(self.gpio_form)
-        
-        self.register_form = RegisterForm(None) # Must toplevel widget
-        self.moti.addTab(self.register_form)
+        self.tabs = [self.config_form, self.uart_form, self.gpio_form,
+                     self.register_form] 
 
         # Status
         self.status = StatusForm(self)
         self.status.setFixedHeight(30)
         
         bg_vlayout.addWidget(self.title)
-        bg_vlayout.addWidget(self.moti)
+        bg_vlayout.addWidget(self.scene)
         bg_vlayout.addWidget(self.status)
 
         # Connect tabs clicked signal & slot
-        self.title.tabs_signalmapper.mapped.connect(self.moti.showTab)
+        self.title.tabs_signalmapper.mapped.connect(self.check_tab)
 
         # Mask bitmap
         self.mask_map = QBitmap(":/images/images/main_bg.png")
+
+    def check_tab(self, id_):
+        self.tabs[id_].raise_()
         
     def resizeEvent(self, event):
         self.setMask(self.mask_map)
+
+        for tab in self.tabs:
+            tab.setGeometry(self.scene.geometry())
+        self.tabs[0].raise_()
         
     def closeEvent(self, event):
         event.accept()
