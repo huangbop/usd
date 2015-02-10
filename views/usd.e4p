@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project usd -->
-<!-- Saved: 2015-02-06, 13:14:57 -->
+<!-- Saved: 2015-02-10, 11:10:27 -->
 <!-- Copyright (C) 2015 Huang Bo, huangbo@memoright.com -->
 <Project version="5.1">
   <Language>en_US</Language>
@@ -32,6 +32,9 @@
     <Form>ui/title.ui</Form>
     <Form>ui/uart.ui</Form>
     <Form>ui/status.ui</Form>
+    <Form>ui/_tmp.ui</Form>
+    <Form>ui/config.ui</Form>
+    <Form>ui/register.ui</Form>
   </Forms>
   <Translations/>
   <Resources>

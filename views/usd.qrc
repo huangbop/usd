@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="images">
+    <file>images/main_bg.png</file>
     <file>images/register.png</file>
     <file>images/config.png</file>
     <file>images/gpio.png</file>

@@ -70,13 +70,19 @@ class MainForm(QMainWindow):
         # Connect tabs clicked signal & slot
         self.title.tabs_signalmapper.mapped.connect(self.moti.showTab)
 
+        # Mask bitmap
+        self.mask_map = QBitmap(":/images/images/main_bg.png")
+        
     def resizeEvent(self, event):
-        self.setMask(QBitmap("images/main_bg.png"))
-
+        self.setMask(self.mask_map)
+        
+    def closeEvent(self, event):
+        event.accept()
+        
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon("images/uart.png"))
+    app.setWindowIcon(QIcon(":/images/images/uart.png"))
     form = MainForm()
     form.resize(setting.MAIN_WIDTH, setting.MAIN_HEIGHT)
     form.setWindowTitle('SSD Uart Diag Tool')

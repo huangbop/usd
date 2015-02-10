@@ -5,6 +5,7 @@ import string
     
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+import numpy as np
 import pyqtgraph as pg
 
 from usd.views.ui.Ui_gpio import Ui_gpio
@@ -19,7 +20,7 @@ class LedsView(QGraphicsView):
         self.scene = QGraphicsScene(self)
         self.setScene(self.scene)
 
-        self._status = 0
+        self._status = []
 
         self.brushes = [QBrush(QColor(c[0], c[1], c[2], c[3])) for c in colors]
         self.leds = []
@@ -51,6 +52,41 @@ class LedsView(QGraphicsView):
             led.setRect(i*deltax + deltax/2, 0, h, h)
 
         self.status = (0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0)
+        
+
+class GpioPlotView(pg.PlotWidget):
+    def __init__(self, parent):
+        pg.PlotWidget.__init__(self, parent)
+
+        self.ptr = 0
+        self.curves = []
+        self.data = []
+        for i, color in enumerate(colors[:-1]):
+            curve = pg.PlotDataItem((0, 0), pen=colors[i])
+            dat = np.array([i * 2] * 100)
+            curve.setData(dat)
+            self.curves.append(curve)
+            self.data.append(dat)
+            self.addItem(curve)
+
+        self.showAxis('top')
+
+    def push_status(self, values):
+        d = len(values) - len(self.curves)
+        if d > 0:
+            values = values[:-d]
+        
+        if self.ptr >= self.data[0].shape[0]:
+            for i in range(len(self.curves)):
+                temp = self.data[i]
+                self.data[i] = np.empty(self.data[i].shape[0]*3//2, int)
+                self.data[i][:self.ptr] = temp
+
+        for i, v in enumerate(values):
+            self.data[i][self.ptr] = v + 2 * i
+            self.curves[i].setData(self.data[i])
+        self.ptr += 1
+        
 
 class GpioForm(QWidget, Ui_gpio):
     def __init__(self, parent):
@@ -69,18 +105,17 @@ class GpioForm(QWidget, Ui_gpio):
         ledsbg_hlayout.addWidget(self.ledsview)
         
         # Plot view
-        self.plotview = pg.PlotWidget(self.plot_bg)
-        self.plotview.setStyleSheet("""
-        background-color: red;
-        border-radius: 10px;
-        """)
+        self.plotview = GpioPlotView(self.plot_bg)
 
-        self.plot_bg.setStyleSheet("""
-        background-color: red;
-        border-radius: 10px;
-        """)
         plotbg_hlayout = QHBoxLayout(self.plot_bg)
         plotbg_hlayout.setContentsMargins(0, 0, 0, 0)
         plotbg_hlayout.addWidget(self.plotview)
 
-    
+        # Signals
+        self.btn_acquire.clicked.connect(self.acquire_clicked)
+
+    def acquire_clicked(self):
+        print('xxx')
+        sts = [random.choice([0, 1]) for i in range(8)]
+        self.plotview.push_status(sts)
+        
