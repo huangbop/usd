@@ -58,36 +58,26 @@ class GpioPlotView(pg.PlotWidget):
     def __init__(self, parent):
         pg.PlotWidget.__init__(self, parent)
 
-        self.ptr = 0
         self.curves = []
         self.data = []
         for i, color in enumerate(colors[:-1]):
-            curve = pg.PlotDataItem((0, 0), pen=colors[i])
-            dat = np.array([i * 2] * 100)
-            curve.setData(dat)
+            curve = self.plot((2 * i, 2 * i), pen=color)
             self.curves.append(curve)
-            self.data.append(dat)
-            self.addItem(curve)
+            self.data.append(np.empty(100))
+        self.ptr = 0
 
-        self.showAxis('top')
-
-    def push_status(self, values):
-        d = len(values) - len(self.curves)
-        if d > 0:
-            values = values[:-d]
-        
+    def update(self, values):
+        for i, dat in enumerate(self.data):
+            dat[self.ptr] = values[i] + 2 * i
+        self.ptr += 1
         if self.ptr >= self.data[0].shape[0]:
             for i in range(len(self.curves)):
                 temp = self.data[i]
-                self.data[i] = np.empty(self.data[i].shape[0]*3//2, int)
-                self.data[i][:self.ptr] = temp
-
-        for i, v in enumerate(values):
-            self.data[i][self.ptr] = v + 2 * i
-            self.curves[i].setData(self.data[i])
-        self.ptr += 1
+                self.data[i] = np.empty(self.data[i].shape[0] * 2)
+                self.data[i][:temp.shape[0]] = temp
+        for i, curve in enumerate(self.curves):
+            curve.setData(self.data[i][:self.ptr])
         
-
 class GpioForm(QWidget, Ui_gpio):
     def __init__(self, parent):
         QWidget.__init__(self, parent)
@@ -111,11 +101,15 @@ class GpioForm(QWidget, Ui_gpio):
         plotbg_hlayout.setContentsMargins(0, 0, 0, 0)
         plotbg_hlayout.addWidget(self.plotview)
 
-        # Signals
-        self.btn_acquire.clicked.connect(self.acquire_clicked)
+        # Timer
+        self.timer = QTimer()
+        self.timer.setInterval(50)
+        self.timer.timeout.connect(self.yield_values)
 
-    def acquire_clicked(self):
-        print('xxx')
+        # Signals
+        self.btn_acquire.clicked.connect(self.timer.start)
+
+    def yield_values(self):
         sts = [random.choice([0, 1]) for i in range(8)]
-        self.plotview.push_status(sts)
+        self.plotview.update(sts)
         
