@@ -109,7 +109,18 @@ class GpioForm(QWidget, Ui_gpio):
         # Signals
         self.btn_acquire.clicked.connect(self.timer.start)
 
+        self.led = QToolButton(self)
+        self.led.setGeometry(0, 0, 20, 20)
+        self.led.setStyleSheet("""
+        background-color: qlineargradient(spread:pad,
+        x1:0, y1:1, x2:0, y2:0,
+        stop:0 rgb(160, 0, 0), stop:1 rgb(224, 0, 0));
+        border-radius: 10px;
+        """)
+        
+
     def yield_values(self):
         sts = [random.choice([0, 1]) for i in range(8)]
         self.plotview.update(sts)
-        
+        self.ledsview.status = sts
+
