@@ -19,14 +19,14 @@ class LedsBar(QWidget):
 
         self.qss = """
         border: 1px solid rgb(208, 208, 208);
-        border-radius: 10px;
+        border-radius: 7px;
         background-color: rgb%s;
         """
         self.leds = []
         hlayout = QHBoxLayout(self)
         for i in range(len(colors) - 1):
             tb = QToolButton(self)
-            tb.setFixedSize(20, 20)
+            tb.setFixedSize(14, 14)
             tb.setStyleSheet(self.qss % str(colors[-1]))
             hlayout.addWidget(tb)
             self.leds.append(tb)
@@ -50,7 +50,10 @@ class LedsBar(QWidget):
 
 class GpioPlotView(pg.PlotWidget):
     def __init__(self, parent):
-        pg.PlotWidget.__init__(self, parent)
+        pg.PlotWidget.__init__(self, parent, background=QColor(255, 255, 255))
+
+        self.showAxis('top')
+        self.showAxis('right')
 
         self.curves = []
         self.data = []
