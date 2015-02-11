@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\gpio.ui'
 #
-# Created: Tue Feb 10 22:40:53 2015
+# Created: Wed Feb 11 15:20:28 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -68,9 +68,17 @@ class Ui_gpio(object):
         self.verticalLayout_2.addWidget(self.plot_bg)
         self.horizontalLayout_3.addLayout(self.verticalLayout_2)
         self.verticalLayout = QtGui.QVBoxLayout()
+        self.verticalLayout.setContentsMargins(-1, 12, -1, -1)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        spacerItem2 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
-        self.verticalLayout.addItem(spacerItem2)
+        self.pushButton = QtGui.QPushButton(self.bg)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
+        self.pushButton.setSizePolicy(sizePolicy)
+        self.pushButton.setMinimumSize(QtCore.QSize(80, 30))
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.verticalLayout.addWidget(self.pushButton)
         self.btn_acquire = QtGui.QPushButton(self.bg)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -80,8 +88,8 @@ class Ui_gpio(object):
         self.btn_acquire.setMinimumSize(QtCore.QSize(80, 30))
         self.btn_acquire.setObjectName(_fromUtf8("btn_acquire"))
         self.verticalLayout.addWidget(self.btn_acquire)
-        spacerItem3 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem3)
+        spacerItem2 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem2)
         self.pushButton_2 = QtGui.QPushButton(self.bg)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -99,6 +107,7 @@ class Ui_gpio(object):
 
     def retranslateUi(self, gpio):
         gpio.setWindowTitle(_translate("gpio", "Form", None))
+        self.pushButton.setText(_translate("gpio", "Setting", None))
         self.btn_acquire.setText(_translate("gpio", "Acquire", None))
         self.pushButton_2.setText(_translate("gpio", "Export", None))
 

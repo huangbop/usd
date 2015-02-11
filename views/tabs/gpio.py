@@ -54,6 +54,7 @@ class GpioPlotView(pg.PlotWidget):
 
         self.showAxis('top')
         self.showAxis('right')
+        self.setLimits(xMin=0)
 
         self.curves = []
         self.data = []
@@ -74,6 +75,7 @@ class GpioPlotView(pg.PlotWidget):
                 self.data[i][:temp.shape[0]] = temp
         for i, curve in enumerate(self.curves):
             curve.setData(self.data[i][:self.ptr])
+        self.setRange(xRange=[self.ptr - 100, self.ptr], padding=0.01)
         
 class GpioForm(QWidget, Ui_gpio):
     def __init__(self, parent):

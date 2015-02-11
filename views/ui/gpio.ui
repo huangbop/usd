@@ -124,21 +124,27 @@
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="topMargin">
+         <number>12</number>
+        </property>
         <item>
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
+         <widget class="QPushButton" name="pushButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
+          <property name="minimumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>80</width>
+            <height>30</height>
            </size>
           </property>
-         </spacer>
+          <property name="text">
+           <string>Setting</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="btn_acquire">
