@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\register.ui'
 #
-# Created: Tue Feb 10 22:39:53 2015
+# Created: Thu Feb 12 16:27:45 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_register_(object):
     def setupUi(self, register_):
         register_.setObjectName(_fromUtf8("register_"))
-        register_.resize(680, 467)
+        register_.resize(789, 610)
         self.horizontalLayout = QtGui.QHBoxLayout(register_)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setMargin(0)
@@ -37,15 +37,16 @@ class Ui_register_(object):
         self.horizontalLayout_2.setSpacing(30)
         self.horizontalLayout_2.setContentsMargins(15, 15, 30, 15)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
-        self.tableWidget = QtGui.QTableWidget(self.bg)
-        self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
-        self.tableWidget.setColumnCount(0)
-        self.tableWidget.setRowCount(0)
-        self.horizontalLayout_2.addWidget(self.tableWidget)
+        self.table_bg = QtGui.QWidget(self.bg)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.table_bg.sizePolicy().hasHeightForWidth())
+        self.table_bg.setSizePolicy(sizePolicy)
+        self.table_bg.setObjectName(_fromUtf8("table_bg"))
+        self.horizontalLayout_2.addWidget(self.table_bg)
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem)
         self.pushButton = QtGui.QPushButton(self.bg)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -64,6 +65,37 @@ class Ui_register_(object):
         self.pushButton_2.setMinimumSize(QtCore.QSize(80, 30))
         self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
         self.verticalLayout.addWidget(self.pushButton_2)
+        spacerItem = QtGui.QSpacerItem(20, 60, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem)
+        self.btn_add = QtGui.QPushButton(self.bg)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btn_add.sizePolicy().hasHeightForWidth())
+        self.btn_add.setSizePolicy(sizePolicy)
+        self.btn_add.setMinimumSize(QtCore.QSize(80, 30))
+        self.btn_add.setObjectName(_fromUtf8("btn_add"))
+        self.verticalLayout.addWidget(self.btn_add)
+        self.btn_del = QtGui.QPushButton(self.bg)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btn_del.sizePolicy().hasHeightForWidth())
+        self.btn_del.setSizePolicy(sizePolicy)
+        self.btn_del.setMinimumSize(QtCore.QSize(80, 30))
+        self.btn_del.setObjectName(_fromUtf8("btn_del"))
+        self.verticalLayout.addWidget(self.btn_del)
+        self.btn_load = QtGui.QPushButton(self.bg)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btn_load.sizePolicy().hasHeightForWidth())
+        self.btn_load.setSizePolicy(sizePolicy)
+        self.btn_load.setMinimumSize(QtCore.QSize(80, 30))
+        self.btn_load.setObjectName(_fromUtf8("btn_load"))
+        self.verticalLayout.addWidget(self.btn_load)
+        spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem1)
         self.horizontalLayout_2.addLayout(self.verticalLayout)
         self.horizontalLayout.addWidget(self.bg)
 
@@ -74,6 +106,9 @@ class Ui_register_(object):
         register_.setWindowTitle(_translate("register_", "Form", None))
         self.pushButton.setText(_translate("register_", "Read", None))
         self.pushButton_2.setText(_translate("register_", "Write", None))
+        self.btn_add.setText(_translate("register_", "Add row", None))
+        self.btn_del.setText(_translate("register_", "Del row", None))
+        self.btn_load.setText(_translate("register_", "Load rows", None))
 
 
 if __name__ == "__main__":

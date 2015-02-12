@@ -6,23 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>707</width>
-    <height>435</height>
+    <width>730</width>
+    <height>540</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QGraphicsView" name="graphicsView">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>9</y>
-     <width>256</width>
-     <height>192</height>
-    </rect>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections/>
