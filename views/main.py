@@ -83,7 +83,7 @@ class MainForm(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(":/images/images/uart.png"))
-    QFontDatabase.addApplicationFont(":/fonts/fonts/consola.ttf")    
+    QFontDatabase.addApplicationFont(":/fonts/fonts/DejaVuSansMono.ttf")
     form = MainForm()
     form.resize(setting.MAIN_WIDTH, setting.MAIN_HEIGHT)
     form.setWindowTitle('SSD Uart Diag Tool')

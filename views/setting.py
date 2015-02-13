@@ -18,8 +18,8 @@ background-color: rgba(0, 0, 0, 0);
 }
 
 QToolButton {
-color: rgb(80, 80, 80);
-font: 8pt "verdana";
+color: rgb(64, 64, 64);
+font: 8pt "dejavu sans mono";
 }
 
 """
@@ -42,17 +42,19 @@ background-color: white;
 QPlainTextEdit {
 border-radius: 8px;
 background-color: rgb(208, 224, 240);
-font: 11pt "Consolas";
+font: 10pt "dejavu sans mono";
 }
 
 QPushButton {
+color: rgb(64, 64, 64);
+border-color: rgba(80, 80, 80, 0);
 background-color: qlineargradient(spread:pad,
 x1:0, y1:1, x2:0, y2:0,
 stop:0 rgb(208, 208, 208), stop:1 rgb(208, 208, 208));
 border-style: solid;
 border-width: 2px;
-border-radius: 8px;
-font: 8pt "verdana";
+border-radius: 10px;
+font: 8pt "dejavu sans mono";
 }
 
 QPushButton:hover {

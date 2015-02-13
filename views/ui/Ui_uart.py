@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\uart.ui'
 #
-# Created: Tue Feb 10 22:39:51 2015
+# Created: Fri Feb 13 20:14:13 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!

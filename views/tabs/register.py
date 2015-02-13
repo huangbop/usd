@@ -13,6 +13,10 @@ from usd.views.setting import tabs_style
 class CellWidget(QLineEdit):
     def __init__(self, row, col, parent):
         QLineEdit.__init__(self, parent)
+        self.setFont(QFont("dejavu sans mono", 11))
+
+        if col:
+            self.setReadOnly(True) 
 
         self.validators = [
             QRegExpValidator(QRegExp(r'0[xX][0-9]+')),
@@ -28,6 +32,7 @@ class CellWidget(QLineEdit):
 class RegTable(QTableWidget):
     def __init__(self, parent):
         QTableWidget.__init__(self, 0, 4, parent)
+        
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.horizontalHeader().setResizeMode(3, QHeaderView.Stretch)
         self.horizontalHeader().resizeSection(0, 160)
@@ -37,11 +42,14 @@ class RegTable(QTableWidget):
         self.headers = ('Address', 'Hex', 'Dec', 'Bin')
         self.setHorizontalHeaderLabels(self.headers)
 
+        self.add_row()
+
     def add_row(self):
         row = self.rowCount()
         self.insertRow(row)
         for i in range(len(self.headers)):
-            self.setItem(row, i, QTableWidgetItem())
+            item = QTableWidgetItem()
+            self.setItem(row, i, item)
             self.setCellWidget(row, i, CellWidget(row, i, self))
 
     def del_row(self):
@@ -54,11 +62,7 @@ class RegTable(QTableWidget):
     def load_rows(self):
         pass
 
-    
-                
         
-
-
 class RegisterForm(QWidget, Ui_register_):
     def __init__(self, parent):
         QWidget.__init__(self, parent)

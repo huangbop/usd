@@ -10,6 +10,7 @@
     <file>images/setting.png</file>
   </qresource>
   <qresource prefix="fonts">
-    <file>fonts/consola.ttf</file>
+    <file>fonts/DejaVuSansMono.ttf</file>
+    <file>fonts/DejaVuSansMono-Bold.ttf</file>
   </qresource>
 </RCC>
