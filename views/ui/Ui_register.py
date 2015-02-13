@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'E:\hb\projects\usd\views\ui\register.ui'
 #
-# Created: Thu Feb 12 16:27:45 2015
+# Created: Thu Feb 12 18:26:15 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -94,6 +94,15 @@ class Ui_register_(object):
         self.btn_load.setMinimumSize(QtCore.QSize(80, 30))
         self.btn_load.setObjectName(_fromUtf8("btn_load"))
         self.verticalLayout.addWidget(self.btn_load)
+        self.btn_save = QtGui.QPushButton(self.bg)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btn_save.sizePolicy().hasHeightForWidth())
+        self.btn_save.setSizePolicy(sizePolicy)
+        self.btn_save.setMinimumSize(QtCore.QSize(80, 30))
+        self.btn_save.setObjectName(_fromUtf8("btn_save"))
+        self.verticalLayout.addWidget(self.btn_save)
         spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem1)
         self.horizontalLayout_2.addLayout(self.verticalLayout)
@@ -109,6 +118,7 @@ class Ui_register_(object):
         self.btn_add.setText(_translate("register_", "Add row", None))
         self.btn_del.setText(_translate("register_", "Del row", None))
         self.btn_load.setText(_translate("register_", "Load rows", None))
+        self.btn_save.setText(_translate("register_", "Save rows", None))
 
 
 if __name__ == "__main__":

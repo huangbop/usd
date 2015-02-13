@@ -10,9 +10,29 @@ from usd.views.ui.Ui_register import Ui_register_
 from usd.views.setting import tabs_style
 
 
+class CellWidget(QLineEdit):
+    def __init__(self, row, col, parent):
+        QLineEdit.__init__(self, parent)
+
+        self.validators = [
+            QRegExpValidator(QRegExp(r'0[xX][0-9]+')),
+            QRegExpValidator(QRegExp(r'')),
+            QRegExpValidator(QRegExp(r'')),
+            QRegExpValidator(QRegExp(r'')),
+        ]
+
+        self.setValidator(self.validators[col])        
+    
+
+
 class RegTable(QTableWidget):
     def __init__(self, parent):
         QTableWidget.__init__(self, 0, 4, parent)
+        self.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.horizontalHeader().setResizeMode(3, QHeaderView.Stretch)
+        self.horizontalHeader().resizeSection(0, 160)
+        self.horizontalHeader().resizeSection(1, 160)
+        self.horizontalHeader().resizeSection(2, 160)
     
         self.headers = ('Address', 'Hex', 'Dec', 'Bin')
         self.setHorizontalHeaderLabels(self.headers)
@@ -22,6 +42,7 @@ class RegTable(QTableWidget):
         self.insertRow(row)
         for i in range(len(self.headers)):
             self.setItem(row, i, QTableWidgetItem())
+            self.setCellWidget(row, i, CellWidget(row, i, self))
 
     def del_row(self):
         row_set = set()
@@ -32,7 +53,6 @@ class RegTable(QTableWidget):
 
     def load_rows(self):
         pass
-
 
     
                 

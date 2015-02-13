@@ -42,7 +42,7 @@ background-color: white;
 QPlainTextEdit {
 border-radius: 8px;
 background-color: rgb(208, 224, 240);
-font: 11pt "Courier New";
+font: 11pt "Consolas";
 }
 
 QPushButton {

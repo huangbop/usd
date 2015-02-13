@@ -9,4 +9,7 @@
     <file>images/min.png</file>
     <file>images/setting.png</file>
   </qresource>
+  <qresource prefix="fonts">
+    <file>fonts/consola.ttf</file>
+  </qresource>
 </RCC>
