@@ -1,7 +1,3 @@
-import os
-import sys
-import random
-    
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
@@ -37,6 +33,7 @@ class TitleForm(QWidget, Ui_title):
         self.tab_uart.clicked.connect(self.tabs_signalmapper.map)
         self.tab_gpio.clicked.connect(self.tabs_signalmapper.map)
         self.tab_register.clicked.connect(self.tabs_signalmapper.map)
+        self.tab_uart
         
         self.tab_clicked(0)
 

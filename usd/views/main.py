@@ -59,6 +59,7 @@ class MainForm(QMainWindow):
         bg_vlayout.addWidget(self.title)
         bg_vlayout.addWidget(self.scene)
         bg_vlayout.addWidget(self.status)
+        
 
         # Connect tabs clicked signal & slot
         self.title.tabs_signalmapper.mapped.connect(self.check_tab)
