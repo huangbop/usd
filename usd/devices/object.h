@@ -4,7 +4,7 @@
 extern "C" {
 #endif
 
-#define NULL ((void *)0)
+#define NULL 0
 #define UxObject_HEAD UxObject ob_base;
 
 #define UxObject_INIT(o, typeobj) (((UxObject *)(o))->ob_type = (typeobj))

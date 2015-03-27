@@ -5,10 +5,12 @@ extern "C" {
 #endif
 
 #include "object.h"
+#include "windows.h"
 
 	typedef struct {
 		UxObject_HEAD
 		int index;
+		HANDLE handle;
 	} UxSerialObject;
 	
 

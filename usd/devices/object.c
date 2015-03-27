@@ -15,6 +15,10 @@ int UxObject_Open(UxObject *o)
 
 int UxObject_Close(UxObject *o)
 {
+	closefunc cf = o->ob_type->tp_close;
+
+	if (cf)
+		return cf(o);
 	return -1;
 }
 
