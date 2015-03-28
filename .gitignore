@@ -61,3 +61,9 @@ __a.py
 # Eric
 _eric6project/
 __ui__/
+
+# vs2010
+cscope*
+vs2010/
+!vs2010/*.sln
+!vs2010/*.vcxproj
